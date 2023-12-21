@@ -6,9 +6,11 @@ import java.util.Scanner;
 public class AddressBook {
     private static Scanner scanner = new Scanner(System.in);
 
+    public String name;
     private ArrayList<Contact> contactList;
 
-    AddressBook() {
+    AddressBook(String name) {
+        this.name=name;
         this.contactList = new ArrayList<Contact>();
     }
 
