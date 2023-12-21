@@ -19,6 +19,7 @@ public class Main {
             System.out.println("Enter 1. To display the AddressBook");
             System.out.println("Enter 2. To add contact to AddressBook");
             System.out.println("Enter 3. To edit contact in AddressBook");
+            System.out.println("Enter 4. To delete contact from AddressBook");
             System.out.println("Enter 0. To end");
             System.out.println("----------------------------------------");
 
@@ -35,6 +36,10 @@ public class Main {
                     break;
                 case 3:
                     addressbook.editContact();
+                    break;
+
+                case 4:
+                    addressbook.deleteContact();
                     break;
 
                 default:
