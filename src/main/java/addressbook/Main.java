@@ -7,6 +7,10 @@ public class Main {
 
         Contact contact = new Contact("John", "Doe", "1, Azad Nagar", "New Delhi", "Delhi", "110048", "9998889992",
                 "johndoe@gmail.com");
-        contact.displayContact();
+
+        AddressBook book = new AddressBook();
+        book.add(contact);
+
+        book.displayAddressBook();
     }
 }
