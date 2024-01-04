@@ -57,7 +57,7 @@ public class Contact {
 
     }
 
-    public void edit(){
+    public void edit() {
         this.firstName = getInput("Enter new Firstname: ");
         this.lastName = getInput("Enter new Lastname: ");
         this.address = getInput("Enter new Address: ");
@@ -66,5 +66,17 @@ public class Contact {
         this.zip = getInput("Enter new Zip: ");
         this.phoneNumber = getInput("Enter new Phonenumber: ");
         this.email = getInput("Enter new Email: ");
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+
+        Contact person = (Contact) obj;
+        return firstName.equals(person.firstName) && lastName.equals(person.lastName);
     }
 }

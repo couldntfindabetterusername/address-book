@@ -10,11 +10,18 @@ public class AddressBook {
     private ArrayList<Contact> contactList;
 
     AddressBook(String name) {
-        this.name=name;
+        this.name = name;
         this.contactList = new ArrayList<Contact>();
     }
 
     public void add(Contact contact) {
+        boolean isDuplicate = this.contactList.stream().anyMatch(c -> c.equals(contact));
+
+        if (isDuplicate) {
+            System.out.println("Contact with same name already exists");
+            return;
+        }
+
         this.contactList.add(contact);
         System.out.println("Contact is added");
     }
