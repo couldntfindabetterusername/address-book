@@ -1,47 +1,32 @@
 package addressbook;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     static Scanner scanner = new Scanner(System.in);
-    static ArrayList<AddressBook> bookList = new ArrayList<AddressBook>();
+    static AddressBookList bookList = new AddressBookList();
 
     public static void utilityMethod(String method) {
         System.out.println("Which address book?");
         String bookName = scanner.next();
 
-        boolean found = false;
-        for (int i = 0; i < bookList.size(); i++) {
-            if (bookList.get(i).name.equals(bookName)) {
-                System.out.println("Address book found");
-                found = true;
+        switch (method) {
+            case "display-book":
+                bookList.displayBook(bookName);
+                break;
 
-                switch (method) {
-                    case "display-book":
-                        bookList.get(i).displayAddressBook();
-                        break;
+            case "add-contact":
+                bookList.addContactInBook(bookName);
+                break;
 
-                    case "add-contact":
-                        System.out.println("Enter the details to add the contact to AddressBook");
-                        Contact contact = new Contact();
-                        bookList.get(i).add(contact);
-                        break;
+            case "edit-contact":
+                bookList.editContactInBook(bookName);
+                break;
 
-                    case "edit-contact":
-                        bookList.get(i).editContact();
-                        break;
-
-                    case "delete-contact":
-                        bookList.get(i).deleteContact();
-                        break;
-                }
-            }
-        }
-
-        if (!found) {
-            System.out.println("Enter a valid book name");
+            case "delete-contact":
+                bookList.deleteContactInBook(bookName);
+                break;
         }
     }
 
@@ -57,6 +42,12 @@ public class Main {
             System.out.println("Enter 3. To edit a contact in a particular AddressBook");
             System.out.println("Enter 4. To delete a contact from a particular AddressBook");
             System.out.println("Enter 5. To add a new address book");
+            System.out.println("Enter 6. To get a person from particular state");
+            System.out.println("Enter 7. To get a person from particular city");
+            System.out.println("Enter 8. To view contacts based on state name");
+            System.out.println("Enter 9. To view contacts based on city name");
+            System.out.println("Enter 10. To view the count of contacts based on state");
+            System.out.println("Enter 11. To view the count of contacts based on city");
             System.out.println("Enter 0. To end");
             System.out.println("----------------------------------------");
 
@@ -81,8 +72,41 @@ public class Main {
                 case 5:
                     System.out.println("Enter the name of the address book: ");
                     String bookName = scanner.next();
-                    AddressBook addressBook = new AddressBook(bookName);
-                    bookList.add(addressBook);
+                    bookList.addBook(bookName);
+                    break;
+
+                case 6:
+                    System.out.println("Enter the name of the state: ");
+                    String state = scanner.next();
+                    System.out.println("Enter the name of the person: ");
+                    String personByState = scanner.next();
+                    bookList.searchContactBasedOnState(state, personByState);
+                    break;
+                case 7:
+                    System.out.println("Enter the name of the city: ");
+                    String city = scanner.next();
+                    System.out.println("Enter the name of the person: ");
+                    String personByCity = scanner.next();
+                    bookList.searchContactBasedOnCity(city, personByCity);
+                case 8:
+                    System.out.println("Enter the name of the state: ");
+                    String stateName = scanner.next();
+                    bookList.viewContactBasedOnState(stateName);
+                    break;
+                case 9:
+                    System.out.println("Enter the name of the city: ");
+                    String cityName = scanner.next();
+                    bookList.viewContactBasedOnCity(cityName);
+                    break;
+                case 10:
+                    System.out.println("Enter the name of the state: ");
+                    String stateName1 = scanner.next();
+                    bookList.countBasedOnState(stateName1);
+                    break;
+                case 11:
+                    System.out.println("Enter the name of the city: ");
+                    String cityName1 = scanner.next();
+                    bookList.countBasedOnCity(cityName1);
                     break;
                 default:
                     break;

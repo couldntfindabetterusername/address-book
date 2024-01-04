@@ -79,4 +79,8 @@ public class Contact {
         Contact person = (Contact) obj;
         return firstName.equals(person.firstName) && lastName.equals(person.lastName);
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
 }
